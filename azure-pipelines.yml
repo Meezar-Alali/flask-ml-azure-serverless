@@ -24,23 +24,4 @@ variables:
 stages:
 - stage: Build
   displayName: Build stage
-  jobs:
-  - job: BuildJob
-    pool: myAgentPool
-    steps:    
 
-
-
-
-    - task: ArchiveFiles@2
-      displayName: 'myStep 4 - Archive files'
-      inputs:
-        rootFolderOrFile: '$(projectRoot)'
-        includeRootFolder: false
-        archiveType: zip
-        archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-        replaceExistingArchive: true
-
-    - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-      displayName: 'myStep 5 - Upload package'
-      artifact: drop
